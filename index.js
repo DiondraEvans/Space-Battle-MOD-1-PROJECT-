@@ -24,11 +24,10 @@ class Ship {
     }
     retreat(destroyedShip){
         if (alienfleet1.ships[i] = destroyedShip){
-            let alienShip1 = document.getElementById("alienship1")
-            alienShip1.style.backgroundColor ="red"
+            document.getElementById("alienship1").style.backgroundColor ="red"
+        
         } else{
-            let myShip = document.getElementById("mySpaceship")
-            myShip.style.backgroundColor = "blue";
+             document.getElementById("mySpaceship").style.backgroundColor = "blue";
         }
     }
 }
@@ -87,9 +86,9 @@ const playGame = () =>{
                         //hit ship
                         console.log("You hit the enemy ship!")
                         me.attack(alienfleet1.ships[i]);
-                        if (alienfleet1.ships[i].hull <= 0){
-                            me.retreat(alienfleet1.ships[i]);
+                        if (alienfleet1.ships[i].hull <= 0){ //if this is false, it will check the else if statement, if that is also false, it will take you back to do the while loop again. if it's true, you will break out of the while loop into the for loop again
                             console.log("You won that battle! let's keep going!")
+                            me.retreat(alienfleet1.ships[i]);
                             break;
                         } else if (me.hull <= 0){
                             console.log("Critical hit!")
@@ -111,6 +110,8 @@ const playGame = () =>{
                                 console.log("Critical hit!")
                                 break;
                             }
+                        } else{
+                            console.log("The alien ship missed their hit! Your turn!")
                         }
                         
                         
