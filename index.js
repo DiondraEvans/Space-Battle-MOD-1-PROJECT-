@@ -24,14 +24,14 @@ class Ship {
     }
     retreat(destroyedShip){
         if (alienfleet1.ships[i] = destroyedShip){
-            document.getElementById("alienship1").style.backgroundColor ="red"
+           console.log("Alien retreated")
         
         } else{
-             document.getElementById("mySpaceship").style.backgroundColor = "blue";
+             console.log("You retreated")
         }
     }
 }
-let me = new Ship ("USS HelloWorld", 20, 5, .7);
+let me = new Ship ("USS HelloWorld", 6, 5, .7);
 // console.log(me)
 
 
@@ -62,11 +62,11 @@ class Alienfleet {
 let alienfleet1 = new Alienfleet ("Alienfleet1");
 //made my six ships
 alienfleet1.addShip("Alienship1", undefined, undefined, undefined);
-// alienfleet1.addShip("Alienship2", undefined, undefined, undefined);
-// alienfleet1.addShip("Alienship3", undefined, undefined, undefined);
-// alienfleet1.addShip("Alienship4", undefined, undefined, undefined);
-// alienfleet1.addShip("Alienship5", undefined, undefined, undefined);
-// alienfleet1.addShip("Alienship6", undefined, undefined, undefined);
+alienfleet1.addShip("Alienship2", undefined, undefined, undefined);
+alienfleet1.addShip("Alienship3", undefined, undefined, undefined);
+alienfleet1.addShip("Alienship4", undefined, undefined, undefined);
+alienfleet1.addShip("Alienship5", undefined, undefined, undefined);
+alienfleet1.addShip("Alienship6", undefined, undefined, undefined);
 //checking to see if the array of ships turned into objects with properties
 // console.log(alienfleet1);
 // alienfleet1.ships[0].addEnemyShip()
@@ -91,7 +91,8 @@ const playGame = () =>{
                             me.retreat(alienfleet1.ships[i]);
                             break;
                         } else if (me.hull <= 0){
-                            console.log("Critical hit!")
+                            alienfleet1.ships[i].retreat(me);
+                            console.log("Critical hit, You retreated!")
                             break;
                         }
                              //takes you out the while loop
@@ -104,10 +105,10 @@ const playGame = () =>{
                             alienfleet1.ships[i].attack(me);
                             if (alienfleet1.ships[i].hull <= 0){
                                 me.retreat(alienfleet1.ships[i]);
-                                console.log("You won that battle! let's keep going!")
+
                                 break;
                             } else if (me.hull <= 0){
-                                console.log("Critical hit!")
+                                alienfleet1.ships[i].retreat(me);
                                 break;
                             }
                         } else{
@@ -119,12 +120,11 @@ const playGame = () =>{
                         
             
                 }        
-            }
-
-         if (me.hull <= 0){
-            console.log("You lost, loser!")
-            alienfleet1.ships[i].retreat(me);
-         } 
+            } 
+        //     else if (me.hull <= 0){
+        //     console.log("You lost, loser!")
+        //     alienfleet1.ships[i].retreat(me);
+        //  } 
         
        
     };
