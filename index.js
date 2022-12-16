@@ -23,16 +23,16 @@ class Ship {
         //the last part is to check the ships damage
     }
     retreat(destroyedShip){
-        if (alienfleet1.ships[i] = destroyedShip){
-           console.log("Alien retreated")
+        if (destroyedShip ==  me){
+           console.log("You retreated")
         
-        } else{
-             console.log("You retreated")
+        } else if (destroyedShip == alienfleet1.ships[i]){
+             console.log("Alien retreated")
         }
     }
 }
 let me = new Ship ("USS HelloWorld", 6, 5, .7);
-// console.log(me)
+
 
 
 // let myshiphull = document.getElementById('my-ship-hull');
@@ -71,14 +71,18 @@ alienfleet1.addShip("Alienship6", undefined, undefined, undefined);
 // console.log(alienfleet1);
 // alienfleet1.ships[0].addEnemyShip()
 
-
+console.log(typeof alienfleet1.ships);
 // console.log(alienfleet1.ships[0].hull);
 
 //Making the logic for one round of the game
 //attacking the ships one by one. I want to iterate through the array of ships. I will use a for loop.
 const playGame = () =>{
     for(i = 0; i < alienfleet1.ships.length; i++ ){
-            if (me.hull > 0){
+        if (me.hull<= 0){
+            console.log("Game Over");
+            break;
+        }
+            else if (me.hull > 0){
                 let keepLooping = true;
                 while (keepLooping){
                     if (me.accuracy > Math.random()){
@@ -105,7 +109,6 @@ const playGame = () =>{
                             alienfleet1.ships[i].attack(me);
                             if (alienfleet1.ships[i].hull <= 0){
                                 me.retreat(alienfleet1.ships[i]);
-
                                 break;
                             } else if (me.hull <= 0){
                                 alienfleet1.ships[i].retreat(me);
