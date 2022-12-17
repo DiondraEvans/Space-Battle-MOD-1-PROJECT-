@@ -33,6 +33,14 @@ html{
     padding: 10px;
    
 }
+#battle-prompt{
+    width: 300px;
+    height: 200px;
+    padding: 5px;
+    color: white;
+    background-color:#2C5364;
+    border:#2d237c;
+}
 #alienimg{
     width: 140px;
 }
