@@ -80,77 +80,45 @@ myshipfirepower.innerHTML = me.firepower;
 let myshipaccuracy = document.getElementById('my-ship-accuracy');
 myshipaccuracy.innerHTML = me.accuracy;
 
-  
-/* <div id="alienship1" class="alienship">
-<img src="images/enemy_ship.png" alt="enemyship1">
-<div class="alienship1-data">
-    <h1>USS HelloWorld</h1>
-    <h3 id = "alienship1-hull"> replace </h3>
-    <h3 id = "alienship1-firepower">replace</h3>
-    <h3 id = "alienship1-accuracy">replace </h3>
-</div>
-</div> */
-
-let alienship1 = document.getElementById("Alienship1")
-
-let alienship2 = document.getElementById("Alienship2")
-
-let alienship3 = document.getElementById("Alienship3")
-
-let alienship4 = document.getElementById("Alienship4")
-
-let alienship5 = document.getElementById("Alienship5")
-
-let alienship6 = document.getElementById("Alienship6")
-
-
-let alienship1hull = document.getElementById("alienship1-hull");
-alienship1hull.innerHTML = alienfleet1.ships[0].hull;
-let alienship1firepower = document.getElementById("alienship1-firepower")
-alienship1firepower.innerHTML = alienfleet1.ships[0].firepower;
-let alienship1accuracy = document.getElementById("alienship1-accuracy")
-alienship1accuracy.innerHTML = alienfleet1.ships[0].accuracy;
-
-let alienship2hull = document.getElementById("alienship2-hull");
-alienship2hull.innerHTML = alienfleet1.ships[1].hull;
-let alienship2firepower = document.getElementById("alienship2-firepower")
-alienship2firepower.innerHTML = alienfleet1.ships[1].firepower;
-let alienship2accuracy = document.getElementById("alienship2-accuracy")
-alienship2accuracy.innerHTML = alienfleet1.ships[1].accuracy;
-
-let alienship3hull = document.getElementById("alienship3-hull");
-alienship3hull.innerHTML = alienfleet1.ships[2].hull;
-let alienship3firepower = document.getElementById("alienship3-firepower")
-alienship3firepower.innerHTML = alienfleet1.ships[2].firepower;
-let alienship3accuracy = document.getElementById("alienship3-accuracy")
-alienship3accuracy.innerHTML = alienfleet1.ships[2].accuracy;
-
-let alienship4hull = document.getElementById("alienship4-hull");
-alienship4hull.innerHTML = alienfleet1.ships[3].hull;
-let alienship4firepower = document.getElementById("alienship4-firepower")
-alienship4firepower.innerHTML = alienfleet1.ships[3].firepower;
-let alienship4accuracy = document.getElementById("alienship4-accuracy")
-alienship4accuracy.innerHTML = alienfleet1.ships[3].accuracy;
-
-let alienship5hull = document.getElementById("alienship5-hull");
-alienship5hull.innerHTML = alienfleet1.ships[4].hull;
-let alienship5firepower = document.getElementById("alienship5-firepower")
-alienship5firepower.innerHTML = alienfleet1.ships[4].firepower;
-let alienship5accuracy = document.getElementById("alienship5-accuracy")
-alienship5accuracy.innerHTML = alienfleet1.ships[4].accuracy;
-
-let alienship6hull = document.getElementById("alienship6-hull");
-alienship6hull.innerHTML = alienfleet1.ships[5].hull;
-let alienship6firepower = document.getElementById("alienship6-firepower")
-alienship6firepower.innerHTML = alienfleet1.ships[5].firepower;
-let alienship6accuracy = document.getElementById("alienship6-accuracy")
-alienship6accuracy.innerHTML = alienfleet1.ships[5].accuracy;
 
 
 
+for ( i = 0; i < alienfleet1.ships.length; i++){
+    switch (alienfleet1.ships[i].shipname){
+    case "Alienship1":
+        let shiphull1 = document.getElementById("0")
+        shiphull1.innerHTML = alienfleet1.ships[i].hull;
+        break;
+    case "Alienship2":
+        let shiphull2 = document.getElementById("1")
+        shiphull2.innerHTML = alienfleet1.ships[i].hull;
+        break;
+    case "Alienship3":
+        let shiphull3 = document.getElementById("2")
+        shiphull3.innerHTML = alienfleet1.ships[i].hull;
+        break;
+    case "Alienship4":
+        let shiphull4 = document.getElementById("3")
+        shiphull4.innerHTML = alienfleet1.ships[i].hull;
+        break;
+    case "Alienship5":
+        let shiphull5 = document.getElementById("4")
+        shiphull5.innerHTML = alienfleet1.ships[i].hull;
+        break;
+    case "Alienship6":
+        let shiphull6 = document.getElementById("5")
+        shiphull6.innerHTML = alienfleet1.ships[i].hull;
+        break;
 
+    }
+}
+// const alienHulls = document.querySelectorAll(".hull");
 
-
+//  for(i =0; i < alienHulls.length; i++){
+//         if(alienHulls[i] == i){
+//             alienHulls[i].innerHTML = alienfleet1.ships[i].hull
+//          }
+//     }
 
 
 
@@ -175,10 +143,7 @@ const playGame = () =>{
                         //Nw hit ship
                         console.log("You hit the enemy ship!")
                         me.attack(alienfleet1.ships[i]); //determining whose hull to decrease
-            
-                        
-                                alienfleet1.ships[i].innerHTML = alienfleet1.ships[i].hull;
-                         
+                       
                         
                         if (alienfleet1.ships[i].hull <= 0){ //if this is false, it will check the else if statement, if that is also false, it will take you back to do the while loop again. if it's true, you will break out of the while loop into the for loop again
                             console.log("You won that battle!")
@@ -190,6 +155,7 @@ const playGame = () =>{
                             }
                             break;
                         } else if (me.hull <= 0){
+                            console.log(`${alienfleet1.ships[i].shipname} defeated you!`)
                             alienfleet1.ships[i].retreat(me);
                             myShip.remove()
                             break;
@@ -210,6 +176,7 @@ const playGame = () =>{
                                 
                                 break;
                             } else if (me.hull <= 0){
+                                console.log(`${alienfleet1.ships[i].shipname} defeated you!`)
                                 alienfleet1.ships[i].retreat(me);
                                 myShip.remove()
                                 break;
@@ -220,10 +187,7 @@ const playGame = () =>{
                         
                         
                      }
-                        // if (me.hull > 0 && alienfleet1.ships[i] <= 0){
-                //     wonGame = true;
-                //     console.log("You Won!!")
-                //  }         
+                        
             
                 }  
                       
@@ -234,6 +198,93 @@ const playGame = () =>{
 
 playGame();
 
+for ( i = 0; i < alienfleet1.ships.length; i++){
+    switch (alienfleet1.ships[i].shipname){
+    case "Alienship1":
+        let shiphull1 = document.getElementById("0")
+        shiphull1.innerHTML = alienfleet1.ships[i].hull;
+        break;
+    case "Alienship2":
+        let shiphull2 = document.getElementById("1")
+        shiphull2.innerHTML = alienfleet1.ships[i].hull;
+        break;
+    case "Alienship3":
+        let shiphull3 = document.getElementById("2")
+        shiphull3.innerHTML = alienfleet1.ships[i].hull;
+        break;
+    case "Alienship4":
+        let shiphull4 = document.getElementById("3")
+        shiphull4.innerHTML = alienfleet1.ships[i].hull;
+        break;
+    case "Alienship5":
+        let shiphull5 = document.getElementById("4")
+        shiphull5.innerHTML = alienfleet1.ships[i].hull;
+        break;
+    case "Alienship6":
+        let shiphull6 = document.getElementById("5")
+        shiphull6.innerHTML = alienfleet1.ships[i].hull;
+        break;
+
+    }
+}
+for ( i = 0; i < alienfleet1.ships.length; i++){
+    switch (alienfleet1.ships[i].shipname){
+    case "Alienship1":
+        let shipfirepower1 = document.getElementById("firepower0")
+        shipfirepower1.innerHTML = alienfleet1.ships[i].firepower;
+        break;
+    case "Alienship2":
+        let shipfirepower2 = document.getElementById("firepower1")
+        shipfirepower2.innerHTML = alienfleet1.ships[i].firepower;
+        break;
+    case "Alienship3":
+        let shipfirepower3 = document.getElementById("firepower2")
+        shipfirepower3.innerHTML = alienfleet1.ships[i].firepower;
+        break;
+    case "Alienship4":
+        let shipfirepower4 = document.getElementById("firepower3")
+        shipfirepower4.innerHTML = alienfleet1.ships[i].firepower;
+        break;
+    case "Alienship5":
+        let shipfirepower5 = document.getElementById("firepower4")
+        shipfirepower5.innerHTML = alienfleet1.ships[i].firepower;
+        break;
+    case "Alienship6":
+        let shipfirepower6 = document.getElementById("firepower5")
+        shipfirepower6.innerHTML = alienfleet1.ships[i].firepower;
+        break;
+
+    }
+}
+for ( i = 0; i < alienfleet1.ships.length; i++){
+    switch (alienfleet1.ships[i].shipname){
+    case "Alienship1":
+        let shipaccuracy1 = document.getElementById("accuracy0")
+        shipaccuracy1.innerHTML = alienfleet1.ships[i].accuracy;
+        break;
+    case "Alienship2":
+        let shipaccuracy2 = document.getElementById("accuracy1")
+        shipaccuracy2.innerHTML = alienfleet1.ships[i].accuracy;
+        break;
+    case "Alienship3":
+        let shipaccuracy3 = document.getElementById("accuracy2")
+        shipaccuracy3.innerHTML = alienfleet1.ships[i].accuracy;
+        break;
+    case "Alienship4":
+        let shipaccuracy4 = document.getElementById("accuracy3")
+        shipaccuracy4.innerHTML = alienfleet1.ships[i].accuracy;
+        break;
+    case "Alienship5":
+        let shipaccuracy5 = document.getElementById("accuracy4")
+        shipaccuracy5.innerHTML = alienfleet1.ships[i].accuracy;
+        break;
+    case "Alienship6":
+        let shipaccuracy6 = document.getElementById("accuracy5")
+        shipaccuracy6.innerHTML = alienfleet1.ships[i].accuracy;
+        break;
+
+    }
+}
 
 
 
