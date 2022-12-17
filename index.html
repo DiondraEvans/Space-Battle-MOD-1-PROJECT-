@@ -5,54 +5,81 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spaceship battle</title>
+    <link href="index.css" rel="stylesheet">
     <script src="index.js" defer></script>
   
 </head>
 <body>
-    <div id ="mySpaceship">
-        <img src="images/USS_Ship.png" alt="my space ship">
-        <div class="ship-data">
-            <h1>USS HelloWorld</h1>
-            <h3 id = "my-ship-hull"> replace </h3>
-            <h3 id = "my-ship-firepower">replace</h3>
-            <h3 id = "my-ship-accuracy">replace </h3>
-        </div>
+    <div id="banner">
+        <h1>Spaceship Battle</h1>
     </div>
-    
-    <div id="alienship1">
-        <img src="images/enemy_ship.png" alt="enemyship1">
-        <div class="alienship1-data">
-            
+    <button onclick = "playGame()">Let's play!</button>
+    <div id="game-area">
+        <div id ="mySpaceship">
+            <img src="images/USS_Ship.png" alt="my space ship">
+            <div class="ship-data">
+                <h1>USS HelloWorld</h1>
+                <h3 id = "my-ship-hull"> replace </h3>
+                <h3 id = "my-ship-firepower">replace</h3>
+                <h3 id = "my-ship-accuracy">replace </h3>
+            </div>
         </div>
-    </div>
-    <div id="alienship2">
-        <img src="images/enemy_ship.png" alt="enemyship2">
-        <div class="alienship2-data">
-            
-        </div>
-    </div>
-    <div id="alienship3">
-        <img src="images/enemy_ship.png" alt="enemyship3">
-        <div class="alienship3-data">
-            
-        </div>
-    </div>
-    <div id="alienship4">
-        <img src="images/enemy_ship.png" alt="enemyship4">
-        <div class="alienship4-data">
-            
-        </div>
-    </div>
-    <div id="alienship5">
-        <img src="images/enemy_ship.png" alt="enemyship5">
-        <div class="alienship5-data">
-            
-        </div>
-    </div>
-    <div id="alienship6">
-        <img src="images/enemy_ship.png" alt="enemyship6">
-        <div class="alienship6-data">
-            
+        grouping hulls together
+        <div id="alien-area">
+            <div id="Alienship1" class="alienship">
+                <img src="images/enemy_ship.png" alt="enemyship1" id="alienimg">
+                <div class="alienship1-data" id="aliendata">
+                    <h1>Alien 1</h1>
+                    <h3 class="0"id = "alienship1-hull"> replace </h3>
+                    <h3 id = "alienship1-firepower">replace</h3>
+                    <h3 id = "alienship1-accuracy">replace </h3>
+                </div>
+            </div>
+            <div id="Alienship2" class="alienship">
+                <img src="images/enemy_ship.png" alt="enemyship2" id="alienimg">
+                <div class="alienship2-data" id="aliendata">
+                    <h1>Alien 2</h1>
+                    <h3 id = "alienship2-hull"> replace </h3>
+                    <h3 id = "alienship2-firepower">replace</h3>
+                    <h3 id = "alienship2-accuracy">replace </h3>
+                </div>
+            </div>
+            <div id="Alienship3" class="alienship">
+                <img src="images/enemy_ship.png" alt="enemyship3" id="alienimg">
+                <div class="alienship3-data" id="aliendata">
+                    <h1>Alien 3</h1>
+                    <h3 id = "alienship3-hull"> replace </h3>
+                    <h3 id = "alienship3-firepower">replace</h3>
+                    <h3 id = "alienship3-accuracy">replace </h3>
+                </div>
+            </div>
+            <div id="Alienship4" class="alienship">
+                <img src="images/enemy_ship.png" alt="enemyship4" id="alienimg">
+                <div class="alienship4-data" id="aliendata">
+                    <h1>Alien 4</h1>
+                    <h3 id = "alienship4-hull"> replace </h3>
+                    <h3 id = "alienship4-firepower">replace</h3>
+                    <h3 id = "alienship4-accuracy">replace </h3>
+                </div>
+            </div>
+            <div id="Alienship5" class="alienship">
+                <img src="images/enemy_ship.png" alt="enemyship5" id="alienimg">
+                <div class="alienship5-data" id="aliendata">
+                    <h1>Alien 5</h1>
+                    <h3 id = "alienship5-hull"> replace </h3>
+                    <h3 id = "alienship5-firepower">replace</h3>
+                    <h3 id = "alienship5-accuracy">replace </h3>
+                </div>
+            </div>
+            <div id="Alienship6" class="alienship">
+                <img src="images/enemy_ship.png" alt="enemyship6" id="alienimg">
+                <div class="alienship6-data" id="aliendata">
+                    <h1>Alien 6</h1>
+                    <h3 id = "alienship6-hull"> replace </h3>
+                    <h3 id = "alienship6-firepower">replace</h3>
+                    <h3 id = "alienship6-accuracy">replace </h3>
+                </div>
+            </div>
         </div>
     </div>
 

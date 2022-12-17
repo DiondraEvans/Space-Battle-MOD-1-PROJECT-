@@ -1,0 +1,69 @@
+*{
+    box-sizing: border-box;
+}
+html{
+    background-image: url("https://wallpaperset.com/w/full/8/f/e/36465.jpg");
+    background-repeat: no-repeat;
+}
+#banner{
+    color: white;
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #9f5183, #2d237c, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    text-align: center;
+    padding: 10px;
+}
+#game-area{
+    margin-top: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+#alienimg{
+    width: 140px;
+}
+#alien-area{
+    background-color: rgba(70, 70, 107, 0.4);
+    display: flex;
+    flex-direction: row;
+    width:  698px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+#mySpaceship{
+    color: white;
+}
+.alienship h1, h3{
+    color: white;
+    
+}
+#aliendata{
+    font-size: smaller;
+}
+#alienship1{
+    width: 200px;
+    height: 200px;
+}
+#alienship2{
+    width: 200px;
+    height: 200px;
+}
+#alienship3{
+    width: 200px;
+    height: 200px;
+}
+#alienship4{
+    width: 200px;
+    height: 200px;
+}
+#alienship5{
+    width: 200px;
+    height: 200px;
+}
+#alienship6{
+    width: 200px;
+    height: 200px;
+}
+
