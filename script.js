@@ -126,71 +126,68 @@ let wonGame = false;
 //Making the logic for one round of the game
 //attacking the ships one by one. I want to iterate through the array of ships. I will use a for loop.
 const playGame = () =>{
-    let wonGame = false;
+    
     for(i = 0; i < alienfleet1.ships.length; i++ ){
         if (me.hull <= 0){
             wonGame = false;
-            console.log("Game Over");
             break;
         }
-            else if (me.hull > 0){
-                let keepLooping = true;
-                while (keepLooping){
+        else if (me.hull > 0){
+            let keepLooping = true;
+            while (keepLooping){
+                
+                if (me.accuracy > Math.random()){
+                     //my ship is going to hit 70% of  out of a 100%
+                    //Nw hit ship
+                    console.log(`You hit the enemy ship! ${alienfleet1.ships[i].shipname}`)
+                    me.attack(alienfleet1.ships[i]); //determining whose hull to decrease
+                   
                     
-                    if (me.accuracy > Math.random()){
-                         //my ship is going to hit 70% of  out of a 100%
-                        //Nw hit ship
-                        console.log(`You hit the enemy ship! ${alienfleet1.ships[i].shipname}`)
-                        me.attack(alienfleet1.ships[i]); //determining whose hull to decrease
-                       
+                    if (alienfleet1.ships[i].hull <= 0){ //if this is false, it will check the else if statement, if that is also false, it will take you back to do the while loop again. if it's true, you will break out of the while loop into the for loop again
+                        console.log("You won that battle!")
+                        me.retreat(alienfleet1.ships[i]);
                         
-                        if (alienfleet1.ships[i].hull <= 0){ //if this is false, it will check the else if statement, if that is also false, it will take you back to do the while loop again. if it's true, you will break out of the while loop into the for loop again
-                            console.log("You won that battle!")
-                            me.retreat(alienfleet1.ships[i]);
-                            
-                            if(alienfleet1.ships[i] == alienfleet1.ships[6]){
-                                console.log("You won!")
-                                wonGame = true;
-                            }
-                            break;
-                        } else if (me.hull <= 0){
+                        if(alienfleet1.ships[i] == alienfleet1.ships[6]){
+                            console.log("You won!")
+                            wonGame = true;
+                        }
+                        break;
+                    } else if (me.hull <= 0){
+                        console.log(`${alienfleet1.ships[i].shipname} defeated you!`)
+                        alienfleet1.ships[i].retreat(me);
+                        myShip.remove()
+                        break;
+                    }
+                         //takes you out the while loop
+                } 
+                
+                else {
+                    //my ship attacked but missed
+                    //alien ship attacks
+                    console.log ("You missed!")
+                    if( alienfleet1.ships[i].hull > 0 && alienfleet1.ships[0].accuracy > Math.random()){
+                        console.log("You have been hit!")
+                        alienfleet1.ships[i].attack(me);
+                        myshiphull.innerHTML = me.hull;
+                        if (me.hull <= 0){
                             console.log(`${alienfleet1.ships[i].shipname} defeated you!`)
                             alienfleet1.ships[i].retreat(me);
+                            console.log("Game Over")
                             myShip.remove()
                             break;
                         }
-                             //takes you out the while loop
-                    } 
+                        
+                    } else{
+                        console.log("The alien ship missed their hit! Your turn!")
+                    }
                     
-                    else {
-                        //my ship attacked but missed
-                        //alien ship attacks
-                        console.log ("You missed!")
-                        if( alienfleet1.ships[i].hull > 0 && alienfleet1.ships[0].accuracy > Math.random()){
-                            console.log("You have been hit!")
-                            alienfleet1.ships[i].attack(me);
-                            myshiphull.innerHTML = me.hull;
-                            if (alienfleet1.ships[i].hull <= 0){
-                                me.retreat(alienfleet1.ships[i]);
-                                
-                                break;
-                            } else if (me.hull <= 0){
-                                console.log(`${alienfleet1.ships[i].shipname} defeated you!`)
-                                alienfleet1.ships[i].retreat(me);
-                                myShip.remove()
-                                break;
-                            }
-                        } else{
-                            console.log("The alien ship missed their hit! Your turn!")
-                        }
-                        
-                        
-                     }
-                        
-            
-                }  
-                      
-            } 
+                    
+                 }
+                    
+        
+            }  
+                  
+        }
        
     };
 }
@@ -201,11 +198,11 @@ for ( i = 0; i < alienfleet1.ships.length; i++){
     switch (alienfleet1.ships[i].shipname){
     case "Alienship1":
         let shiphull1 = document.getElementById("0")
-        shiphull1.innerHTML = alienfleet1.ships[i].hull;
+        shiphull1.innerHTML =`Hull: ${alienfleet1.ships[i].hull}`;
         break;
     case "Alienship2":
         let shiphull2 = document.getElementById("1")
-        shiphull2.innerHTML = alienfleet1.ships[i].hull;
+        shiphull2.innerHTML = `Hull: ${alienfleet1.ships[i].hull}`;
         break;
     case "Alienship3":
         let shiphull3 = document.getElementById("2")
@@ -271,7 +268,7 @@ for ( i = 0; i < alienfleet1.ships.length; i++){
     switch (alienfleet1.ships[i].shipname){
     case "Alienship1":
         let shipfirepower1 = document.getElementById("firepower0")
-        shipfirepower1.innerHTML = alienfleet1.ships[i].firepower;
+        shipfirepower1.innerHTML = `Firepower: ${alienfleet1.ships[i].firepower}`;
         break;
     case "Alienship2":
         let shipfirepower2 = document.getElementById("firepower1")
