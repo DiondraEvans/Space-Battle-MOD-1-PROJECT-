@@ -14,11 +14,24 @@ html{
     padding: 10px;
 }
 #game-area{
-    margin-top: 200px;
+    margin-top: 100px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     
+}
+#button-spacing{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#btn{
+    color: wheat;
+    background-color:#9f5183;
+    border: 3px solid wheat;
+    margin: 20px;
+    padding: 10px;
+   
 }
 #alienimg{
     width: 140px;

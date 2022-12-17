@@ -122,7 +122,6 @@ for ( i = 0; i < alienfleet1.ships.length; i++){
 
 
 
-
 let wonGame = false;
 //Making the logic for one round of the game
 //attacking the ships one by one. I want to iterate through the array of ships. I will use a for loop.
@@ -141,7 +140,7 @@ const playGame = () =>{
                     if (me.accuracy > Math.random()){
                          //my ship is going to hit 70% of  out of a 100%
                         //Nw hit ship
-                        console.log("You hit the enemy ship!")
+                        console.log(`You hit the enemy ship! ${alienfleet1.ships[i].shipname}`)
                         me.attack(alienfleet1.ships[i]); //determining whose hull to decrease
                        
                         
@@ -230,6 +229,47 @@ for ( i = 0; i < alienfleet1.ships.length; i++){
 for ( i = 0; i < alienfleet1.ships.length; i++){
     switch (alienfleet1.ships[i].shipname){
     case "Alienship1":
+        if(alienfleet1.ships[i].hull <= 0){
+            let alienship1 = document.getElementById("Alienship1")
+            alienship1.style.backgroundColor ="red";
+            }
+        break;
+    case "Alienship2":
+        if(alienfleet1.ships[i].hull <= 0){
+            let alienship2 = document.getElementById("Alienship2")
+            alienship2.style.backgroundColor ="red";
+            }
+        break;
+    case "Alienship3":
+        if(alienfleet1.ships[i].hull <= 0){
+            let alienship3 = document.getElementById("Alienship3")
+            alienship3.style.backgroundColor ="red";
+            }
+        break;
+    case "Alienship4":
+        if(alienfleet1.ships[i].hull <= 0){
+            let alienship4 = document.getElementById("Alienship4")
+            alienship4.style.backgroundColor ="red";
+            }
+        break;
+    case "Alienship5":
+        if(alienfleet1.ships[i].hull <= 0){
+            let alienship5 = document.getElementById("Alienship5")
+            alienship5.style.backgroundColor ="red";
+            }
+        break;
+    case "Alienship6":
+        if(alienfleet1.ships[i].hull <= 0){
+            let alienship6 = document.getElementById("Alienship6")
+            alienship6.style.backgroundColor ="red";
+            }
+        break;
+
+    }
+}
+for ( i = 0; i < alienfleet1.ships.length; i++){
+    switch (alienfleet1.ships[i].shipname){
+    case "Alienship1":
         let shipfirepower1 = document.getElementById("firepower0")
         shipfirepower1.innerHTML = alienfleet1.ships[i].firepower;
         break;
@@ -286,6 +326,8 @@ for ( i = 0; i < alienfleet1.ships.length; i++){
     }
 }
 
+
+document.getElementById("btn").onclick  = playGame();
 
 
     // if (me.accuracy > alienfleet1.ships[i].accuracy){
