@@ -9,15 +9,16 @@ class Ship {
     }
     attack(ship){
         if (ship == me){
-        battlePrompt.innerText = (alienfleet1.ships[i].firepower);
-        battlePrompt.innerText = (ship);
+        console.log(alienfleet1.ships[i].firepower);
+        console.log(ship);
         ship.hull -= alienfleet1.ships[i].firepower;
-        battlePrompt.innerText = (ship)
+        console.log(ship)
         } else{
-        battlePrompt.innerText = (me.firepower);
-        battlePrompt.innerText = (ship);
+        console.log(me.firepower);
+        console.log(ship);
         ship.hull -= me.firepower;
-        battlePrompt.innerText = (ship)
+        
+        console.log(ship)
         }
         
         //the last part is to check the ships damage
@@ -26,6 +27,7 @@ class Ship {
         if (destroyedShip ==  me){
            battlePrompt.innerText = `You retreated!!!
            ${alienfleet1.ships[i].shipname} defeated you!`
+            myShipImg.style.visibility = "hidden"
         } else{
              battlePrompt.innerText = ("Alien retreated")
         }
@@ -70,6 +72,7 @@ alienfleet1.addShip("Alien ship 6", undefined, undefined, undefined);
 // battlePrompt.innerText = (alienfleet1.ships[0].hull);
 //connecting html elements with variables in javascript
 let myShip = document.getElementById("mySpaceship")
+let myShipImg = document.getElementById("myshipimg")
 let myshiphull = document.getElementById('my-ship-hull');
 myshiphull.innerHTML = `Hull: ${me.hull}`;
 let myshipfirepower = document.getElementById('my-ship-firepower');
@@ -164,21 +167,23 @@ function playGame(){
                      //my ship is going to hit 70% of  out of a 100%
                     //Nw hit ship
                     battlePrompt.innerText = `You hit the enemy ship! ${alienfleet1.ships[i].shipname}`
+                    console.log(`You hit the enemy ship! ${alienfleet1.ships[i].shipname}`)
                     me.attack(alienfleet1.ships[i]); //determining whose hull to decrease
                    
                     
                     if (alienfleet1.ships[i].hull <= 0){ //if this is false, it will check the else if statement, if that is also false, it will take you back to do the while loop again. if it's true, you will break out of the while loop into the for loop again
                         battlePrompt.innerText = "You won that battle!"
+                        console.log("You won that battle!")
                         me.retreat(alienfleet1.ships[i]);
-                        if(alienfleet1.ships[i] == alienfleet1.ships[i].length - 1){
-                            battlePrompt.innerText = "You won the Game!"
+                        if(alienfleet1.ships[i].shipname == "Alien ship 6"){
+                            battlePrompt.innerText = "You won the game!"
+                            console.log("You won the game!")
                             wonGame = true;
                         }
                         break;
                     } else if (me.hull <= 0){
-                        battlePrompt.innerText = `${alienfleet1.ships[i].shipname} defeated you!`
+                        console.log(`${alienfleet1.ships[i].shipname} defeated you!!!!!!!!!!!!!!!!!!`)
                         alienfleet1.ships[i].retreat(me);
-                        myShip.remove()
                         break;
                     }
                          //takes you out the while loop
@@ -189,15 +194,14 @@ function playGame(){
                     //alien ship attacks
                     
                     battlePrompt.innerText =  "You missed!"
+                    console.log("You missed!")
                     if( alienfleet1.ships[i].hull > 0 && alienfleet1.ships[0].accuracy > Math.random()){
                         battlePrompt.innerText = "You have been hit!"
+                        console.log("You have been hit!")
                         alienfleet1.ships[i].attack(me);
                         myshiphull.innerHTML = me.hull;
                         if (me.hull <= 0){
-                    
                             alienfleet1.ships[i].retreat(me);
-                        
-                            myShip.remove()
                             wonGame = false;
                             break;
                         }
@@ -368,11 +372,13 @@ function playGame(){
                     break;
             
                 }
-            }
+        }
        
     };
+
     
 }
+
 // playGame();
 // const element = document.getElementById("btn");
 // element.addEventListener("click", playGame);

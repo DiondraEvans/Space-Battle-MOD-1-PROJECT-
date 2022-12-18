@@ -31,15 +31,20 @@ html{
     border: 3px solid wheat;
     margin: 0px;
     padding: 10px;
-   
+}
+#battle-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 #battle-prompt{
     width: 300px;
     height: 50px;
     padding: 5px;
     color: white;
-    background-color:#2C5364;
-    border:#2d237c;
+    background-color: #0F2027;
+    border:3px #2d237c inset;
 }
 #alienimg{
     width: 140px;
