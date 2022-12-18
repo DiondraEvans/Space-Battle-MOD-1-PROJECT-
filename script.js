@@ -120,7 +120,7 @@ for ( i = 0; i < alienfleet1.ships.length; i++){
 //          }
 //     }
 
-//adding messages to player 
+//adding messages to player
 let battlePrompt = document.getElementById("battle-prompt");
 battlePrompt.innerText = "Let's play!";
 let wonGame = false;
@@ -128,7 +128,7 @@ let wonGame = false;
 //attacking the ships one by one. I want to iterate through the array of ships. I will use a for loop.
 const playGame = () =>{
     
-    for(i = 0; i < alienfleet1.ships.length; i++ ){
+    for( i = 0; i < alienfleet1.ships.length; i++ ){
         if (me.hull <= 0){
             wonGame = false;
             break;
@@ -164,6 +164,7 @@ const playGame = () =>{
                 else {
                     //my ship attacked but missed
                     //alien ship attacks
+                    
                     battlePrompt.innerText =  "You missed!"
                     if( alienfleet1.ships[i].hull > 0 && alienfleet1.ships[0].accuracy > Math.random()){
                         battlePrompt.innerText = "You have been hit!"
@@ -174,6 +175,7 @@ const playGame = () =>{
                             alienfleet1.ships[i].retreat(me);
                             battlePrompt.innerText = "Game Over"
                             myShip.remove()
+                            wonGame = false;
                             break;
                         }
                         
@@ -191,140 +193,158 @@ const playGame = () =>{
        
     };
 }
-
 playGame();
-
+const element = document.getElementById("btn");
+element.addEventListener("click", playGame);
+//add stats to else if statement so user knows how they killed the alien
 for ( i = 0; i < alienfleet1.ships.length; i++){
     switch (alienfleet1.ships[i].shipname){
     case "Alienship1":
+        if(alienfleet1.ships[i].hull > 0){
         let shiphull1 = document.getElementById("0")
         shiphull1.innerHTML =`Hull: ${alienfleet1.ships[i].hull}`;
-        break;
-    case "Alienship2":
-        let shiphull2 = document.getElementById("1")
-        shiphull2.innerHTML = `Hull: ${alienfleet1.ships[i].hull}`;
-        break;
-    case "Alienship3":
-        let shiphull3 = document.getElementById("2")
-        shiphull3.innerHTML = alienfleet1.ships[i].hull;
-        break;
-    case "Alienship4":
-        let shiphull4 = document.getElementById("3")
-        shiphull4.innerHTML = alienfleet1.ships[i].hull;
-        break;
-    case "Alienship5":
-        let shiphull5 = document.getElementById("4")
-        shiphull5.innerHTML = alienfleet1.ships[i].hull;
-        break;
-    case "Alienship6":
-        let shiphull6 = document.getElementById("5")
-        shiphull6.innerHTML = alienfleet1.ships[i].hull;
-        break;
-
-    }
-}
-for ( i = 0; i < alienfleet1.ships.length; i++){
-    switch (alienfleet1.ships[i].shipname){
-    case "Alienship1":
-        if(alienfleet1.ships[i].hull <= 0){
-            let alienship1 = document.getElementById("Alienship1")
-            alienship1.style.backgroundColor ="red";
-            }
-        break;
-    case "Alienship2":
-        if(alienfleet1.ships[i].hull <= 0){
-            let alienship2 = document.getElementById("Alienship2")
-            alienship2.style.backgroundColor ="red";
-            }
-        break;
-    case "Alienship3":
-        if(alienfleet1.ships[i].hull <= 0){
-            let alienship3 = document.getElementById("Alienship3")
-            alienship3.style.backgroundColor ="red";
-            }
-        break;
-    case "Alienship4":
-        if(alienfleet1.ships[i].hull <= 0){
-            let alienship4 = document.getElementById("Alienship4")
-            alienship4.style.backgroundColor ="red";
-            }
-        break;
-    case "Alienship5":
-        if(alienfleet1.ships[i].hull <= 0){
-            let alienship5 = document.getElementById("Alienship5")
-            alienship5.style.backgroundColor ="red";
-            }
-        break;
-    case "Alienship6":
-        if(alienfleet1.ships[i].hull <= 0){
-            let alienship6 = document.getElementById("Alienship6")
-            alienship6.style.backgroundColor ="red";
-            }
-        break;
-
-    }
-}
-for ( i = 0; i < alienfleet1.ships.length; i++){
-    switch (alienfleet1.ships[i].shipname){
-    case "Alienship1":
         let shipfirepower1 = document.getElementById("firepower0")
         shipfirepower1.innerHTML = `Firepower: ${alienfleet1.ships[i].firepower}`;
-        break;
-    case "Alienship2":
-        let shipfirepower2 = document.getElementById("firepower1")
-        shipfirepower2.innerHTML = alienfleet1.ships[i].firepower;
-        break;
-    case "Alienship3":
-        let shipfirepower3 = document.getElementById("firepower2")
-        shipfirepower3.innerHTML = alienfleet1.ships[i].firepower;
-        break;
-    case "Alienship4":
-        let shipfirepower4 = document.getElementById("firepower3")
-        shipfirepower4.innerHTML = alienfleet1.ships[i].firepower;
-        break;
-    case "Alienship5":
-        let shipfirepower5 = document.getElementById("firepower4")
-        shipfirepower5.innerHTML = alienfleet1.ships[i].firepower;
-        break;
-    case "Alienship6":
-        let shipfirepower6 = document.getElementById("firepower5")
-        shipfirepower6.innerHTML = alienfleet1.ships[i].firepower;
-        break;
-
-    }
-}
-for ( i = 0; i < alienfleet1.ships.length; i++){
-    switch (alienfleet1.ships[i].shipname){
-    case "Alienship1":
         let shipaccuracy1 = document.getElementById("accuracy0")
-        shipaccuracy1.innerHTML = alienfleet1.ships[i].accuracy;
+        shipaccuracy1.innerHTML = `Accuracy: ${alienfleet1.ships[i].accuracy}`;
+        }
+        else if(alienfleet1.ships[i].hull <= 0){
+            let alienship1 = document.getElementById("Alienship1")
+            alienship1.style.backgroundColor ="red";
+            alienship1.innerHTML = `Alienship 1 defeated
+            <br> Hull: ${alienfleet1.ships[i].hull}`
+            
+            alienship1.style.width = "147px";
+            alienship1.style.height = "247px"
+            alienship1.style.display ="flex";
+            alienship1.style.justifyContent ="center";
+            alienship1.style.alignItems ="center";
+            alienship1.style.color = "white";
+            alienship1.style.fontSize = "20px";
+            }
         break;
     case "Alienship2":
+       if(alienfleet1.ships[i].hull > 0){
+        let shiphull2 = document.getElementById("1")
+        shiphull2.innerHTML = `Hull: ${alienfleet1.ships[i].hull}`;
+        let shipfirepower2 = document.getElementById("firepower1")
+        shipfirepower2.innerHTML = `Firepower: ${alienfleet1.ships[i].firepower}`;
         let shipaccuracy2 = document.getElementById("accuracy1")
-        shipaccuracy2.innerHTML = alienfleet1.ships[i].accuracy;
+        shipaccuracy2.innerHTML = `Accuracy: ${alienfleet1.ships[i].accuracy}`;
+       } 
+        else if(alienfleet1.ships[i].hull <= 0){
+            let alienship2 = document.getElementById("Alienship2")
+            alienship2.style.backgroundColor ="red";
+            alienship2.innerHTML = `Alienship 2 defeated`
+            alienship2.style.width = "147px";
+            alienship2.style.height = "247px"
+            alienship2.style.display ="flex";
+            alienship2.style.justifyContent ="center";
+            alienship2.style.alignItems ="center";
+            alienship2.style.color = "white";
+            alienship2.style.fontSize = "20px";
+            }
         break;
     case "Alienship3":
-        let shipaccuracy3 = document.getElementById("accuracy2")
-        shipaccuracy3.innerHTML = alienfleet1.ships[i].accuracy;
+        if(alienfleet1.ships[i].hull > 0) {
+            let shiphull3 = document.getElementById("2")
+            shiphull3.innerHTML = `Hull: ${alienfleet1.ships[i].hull}`;
+            let shipfirepower3 = document.getElementById("firepower2")
+            shipfirepower3.innerHTML =` Firepower: ${alienfleet1.ships[i].firepower}`;
+            let shipaccuracy3 = document.getElementById("accuracy2")
+            shipaccuracy3.innerHTML =  `Accuracy: ${alienfleet1.ships[i].accuracy}`;
+        }
+        else if(alienfleet1.ships[i].hull <= 0){
+            let alienship3 = document.getElementById("Alienship3")
+            alienship3.style.backgroundColor ="red";
+            alienship3.innerHTML = `Alienship 3 defeated`
+            alienship3.style.width = "147px";
+            alienship3.style.height = "247px"
+            alienship3.style.display ="flex";
+            alienship3.style.justifyContent ="center";
+            alienship3.style.alignItems ="center";
+            alienship3.style.color = "white";
+            alienship3.style.fontSize = "20px";
+            }
         break;
     case "Alienship4":
-        let shipaccuracy4 = document.getElementById("accuracy3")
-        shipaccuracy4.innerHTML = alienfleet1.ships[i].accuracy;
+        if(alienfleet1.ships[i].hull > 0){
+            let shiphull4 = document.getElementById("3")
+            shiphull4.innerHTML = `Hull: ${alienfleet1.ships[i].hull}`;
+            let shipfirepower4 = document.getElementById("firepower3")
+            shipfirepower4.innerHTML = `Firepower: ${alienfleet1.ships[i].firepower}`;
+            let shipaccuracy4 = document.getElementById("accuracy3")
+            shipaccuracy4.innerHTML =  `Accuracy: ${alienfleet1.ships[i].accuracy}`;
+        }
+        else if(alienfleet1.ships[i].hull <= 0){
+            let alienship4 = document.getElementById("Alienship4")
+            alienship4.style.backgroundColor ="red";
+            alienship4.innerHTML = `Alienship 4 defeated`
+            alienship4.style.width = "147px";
+            alienship4.style.height = "247px"
+            alienship4.style.display ="flex";
+            alienship4.style.justifyContent ="center";
+            alienship4.style.alignItems ="center";
+            alienship4.style.color = "white";
+            alienship4.style.fontSize = "20px";
+        }
         break;
     case "Alienship5":
-        let shipaccuracy5 = document.getElementById("accuracy4")
-        shipaccuracy5.innerHTML = alienfleet1.ships[i].accuracy;
-        break;
+        if(alienfleet1.ships[i].hull > 0){
+            let shiphull5 = document.getElementById("4")
+            shiphull5.innerHTML = `Hull: ${alienfleet1.ships[i].hull}`;
+            let shipfirepower5 = document.getElementById("firepower4")
+            shipfirepower5.innerHTML = `Firepower: ${alienfleet1.ships[i].firepower}`;
+            let shipaccuracy5 = document.getElementById("accuracy4")
+            shipaccuracy5.innerHTML =  `Accuracy: ${alienfleet1.ships[i].accuracy}`;
+        }
+        else if(alienfleet1.ships[i].hull <= 0){
+            let alienship5 = document.getElementById("Alienship5")
+            alienship5.style.backgroundColor ="red";
+            alienship5.innerHTML = `Alienship 5 defeated`
+            alienship5.style.width = "147px";
+            alienship5.style.height = "247px"
+            alienship5.style.display ="flex";
+            alienship5.style.justifyContent ="center";
+            alienship5.style.alignItems ="center";
+            alienship5.style.color = "white";
+            alienship5.style.fontSize = "20px";
+        }
+            break;
     case "Alienship6":
-        let shipaccuracy6 = document.getElementById("accuracy5")
-        shipaccuracy6.innerHTML = alienfleet1.ships[i].accuracy;
+        if(alienfleet1.ships[i].hull > 0){
+            let shiphull6 = document.getElementById("5")
+            shiphull6.innerHTML = `Hull: ${alienfleet1.ships[i].hull}`;
+            let shipfirepower6 = document.getElementById("firepower5")
+            shipfirepower6.innerHTML =`Firepower: ${alienfleet1.ships[i].firepower}`
+            let shipaccuracy6 = document.getElementById("accuracy5")
+            shipaccuracy6.innerHTML = `Accuracy: ${alienfleet1.ships[i].accuracy}`;
+        }
+        else if (alienfleet1.ships[i].hull <= 0){
+            let alienship6 = document.getElementById("Alienship6")
+            alienship6.style.backgroundColor ="red";
+            alienship6.innerHTML = `Alienship 5 defeated`
+            alienship6.style.width = "147px";
+            alienship6.style.height = "247px"
+            alienship6.style.display ="flex";
+            alienship6.style.justifyContent ="center";
+            alienship6.style.alignItems ="center";
+            alienship6.style.color = "white";
+            alienship6.style.fontSize = "20px";
+        }
         break;
 
     }
 }
 
 
-document.getElementById("btn").onclick  = playGame();
+
+
+
+
+
+
+
 
 
     // if (me.accuracy > alienfleet1.ships[i].accuracy){
