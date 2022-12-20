@@ -36,7 +36,7 @@ class Ship {
         }
     }
 }
-let me = new Ship ("USS HelloWorld", 20, 5, .7); //game is more fun when the hull is lower. 6 allows for various outcomes
+let me = new Ship ("USS HelloWorld", 6, 5, .7); //game is more fun when the hull is lower. 6 allows for various outcomes
 
 //making a fleet of ships to hold all my alien ships
 class Alienfleet {
@@ -63,10 +63,7 @@ alienfleet1.addShip("Alien ship 5", undefined, undefined, undefined);
 alienfleet1.addShip("Alien ship 6", undefined, undefined, undefined);
 //checking to see if the array of ships turned into objects with properties
 // battlePrompt.innerText = (alienfleet1);
-// alienfleet1.ships[0].addEnemyShip()
 
-// battlePrompt.innerText = (typeof alienfleet1.ships);
-// battlePrompt.innerText = (alienfleet1.ships[0].hull);
 //connecting html elements with variables in javascript
 //USS HelloWorld stats before playing the game
 let myShip = document.getElementById("mySpaceship")
@@ -134,6 +131,13 @@ for ( i = 0; i < alienfleet1.ships.length; i++){
 
     }
 }
+//adding the "You won the game" voice using Javascript API 
+function voice(){
+    const text = "You won the game!"
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.pitch = 0.2;
+    window.speechSynthesis.speak(utterance);
+}
 //adding message box to player also added a refresh button for them to play again
 let battlePrompt = document.getElementById("battle-prompt");
 battlePrompt.innerText = "Press the shoot button to play the game! Let's see if you beat the alien fleet or if you get defeated by an alien ship!";
@@ -175,8 +179,8 @@ function playGame(){
             let keepLooping = true;
             while (keepLooping){
                 if (me.accuracy > Math.random()){
-                     //my ship is going to hit 70% of  out of a 100%
-                    //Nw hit ship
+                     //my ship is going to hit 70% of  out of a 100% of the time
+                    //I hit a ship
                     battlePrompt.innerText = `You hit the enemy ship! ${alienfleet1.ships[i].shipname}`
                     console.log(`%c You hit ${alienfleet1.ships[i].shipname}`, "color: red;")
                     me.attack(alienfleet1.ships[i]); //determining whose hull to decrease
@@ -187,6 +191,7 @@ function playGame(){
                         console.log("You won that battle!")
                         me.retreat(alienfleet1.ships[i]);
                         if(i == alienfleet1.ships.length-1){ //i want to say that for the last ship in the array that we basically won the overall game
+                            voice();
                             battlePrompt.innerText = "You won the game! Do you want to play again?"
                             console.log("%c You won the game! Do you want to play again?", "color: green")
                             playagainbtn.appendChild(text);
@@ -368,7 +373,7 @@ function playGame(){
                     else if (alienfleet1.ships[i].hull <= 0){
                         let alienship6 = document.getElementById("Alienship6")
                         alienship6.style.backgroundColor ="rgba(198, 22, 22, 0.257)";
-                        alienship6.innerHTML = `<b>Alienship 5 defeated</b>
+                        alienship6.innerHTML = `<b>Alienship 6 defeated</b>
                         <br> Hull: ${alienfleet1.ships[i].hull}
                         <br> Firepower: ${alienfleet1.ships[i].firepower}
                         <br> Accuracy: ${alienfleet1.ships[i].accuracy}`
