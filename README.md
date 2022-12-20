@@ -1,3 +1,5 @@
+<h1>link to play game here:</h1>
+<p>https://diondraevans.github.io/Space-Battle-MOD-1-PROJECT-/</p>
 # <b>Space-Battle-MOD-1-PROJECT-</b>
 
 <h1>Project Description</h1>
@@ -10,6 +12,3 @@ initiative and get to attack first. However, you do not have targeting lasers an
 <p>I developed this project using object-oriented programming with HTML5 and JavaScript That could be played on the webpage or console. This is a functional battleship game utilizing basic knowledge
 of JavaScript, HTML, and CSS principles to manipulate the DOM.</p>
 
-<h1>Installation Instructions:</h1>
-<p>This game runs in your browser, and guides you with prompts and alerts. Download the HTML
-and JavaScript file in the same folder or location, then drag the HTML file into your browser. Enjoy!</p>
