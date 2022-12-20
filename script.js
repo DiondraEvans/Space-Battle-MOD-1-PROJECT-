@@ -14,7 +14,7 @@ class Ship {
         ship.hull -= alienfleet1.ships[i].firepower;
         console.log(ship)
         } else{
-        console.log(me.firepower);
+        console.log(`${me.shipname}'s firepower: ${me.firepower}`);
         console.log(ship);
         ship.hull -= me.firepower;
         console.log(ship)
@@ -36,12 +36,11 @@ class Ship {
         }
     }
 }
-let me = new Ship ("USS HelloWorld", 20, 5, .7); 
+let me = new Ship ("USS HelloWorld", 6, 5, .7); //game is more fun when the hull is lower. 6 allows for various outcomes
 
 //making a fleet of ships to hold all my alien ships
 class Alienfleet {
-    constructor(name){
-        this.name = name;
+    constructor(){
         this.ships =[];
     }
    // //adding characteristics to my individual alienships carving out those properties using the ship class then pushing to ships array.
@@ -64,10 +63,7 @@ alienfleet1.addShip("Alien ship 5", undefined, undefined, undefined);
 alienfleet1.addShip("Alien ship 6", undefined, undefined, undefined);
 //checking to see if the array of ships turned into objects with properties
 // battlePrompt.innerText = (alienfleet1);
-// alienfleet1.ships[0].addEnemyShip()
 
-// battlePrompt.innerText = (typeof alienfleet1.ships);
-// battlePrompt.innerText = (alienfleet1.ships[0].hull);
 //connecting html elements with variables in javascript
 //USS HelloWorld stats before playing the game
 let myShip = document.getElementById("mySpaceship")
@@ -135,6 +131,13 @@ for ( i = 0; i < alienfleet1.ships.length; i++){
 
     }
 }
+//adding the "You won the game" voice using Javascript API 
+function voice(){
+    const text = "You won the game!"
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.pitch = 0.2;
+    window.speechSynthesis.speak(utterance);
+}
 //adding message box to player also added a refresh button for them to play again
 let battlePrompt = document.getElementById("battle-prompt");
 battlePrompt.innerText = "Press the shoot button to play the game! Let's see if you beat the alien fleet or if you get defeated by an alien ship!";
@@ -161,73 +164,6 @@ playagainbtn.addEventListener('click', function(evt) {
 //cannot figure out how to get the game board to start over again without refreshing the page completely
 //get the game board reset (still working on this, refresh works for now)
 
-// function resetGame(){
-//     let myShip = document.getElementById("mySpaceship")
-//     let myShipImg = document.getElementById("myshipimg")
-//     let myshiphull = document.getElementById('my-ship-hull');
-//     myshiphull.innerHTML = `Hull: ${me.hull}`;
-//     let myshipfirepower = document.getElementById('my-ship-firepower');
-//     myshipfirepower.innerHTML = me.firepower;
-//     let myshipaccuracy = document.getElementById('my-ship-accuracy');
-//     myshipaccuracy.innerHTML = me.accuracy;
-//     for ( i = 0; i < alienfleet1.ships.length; i++){
-//         switch (alienfleet1.ships[i].shipname){
-//         case "Alien ship 1":
-//             let shiphull1 = document.getElementById("0")
-//             shiphull1.innerHTML =`Hull: ${alienfleet1.ships[i].hull}`;
-//             let shipfirepower1 = document.getElementById("firepower0")
-//             shipfirepower1.innerHTML = `Firepower: ${alienfleet1.ships[i].firepower}`;
-//             let shipaccuracy1 = document.getElementById("accuracy0")
-//             shipaccuracy1.innerHTML = `Accuracy: ${alienfleet1.ships[i].accuracy}`;
-//             break;
-//         case "Alien ship 2":
-//             let shiphull2 = document.getElementById("1")
-//             shiphull2.innerHTML = `Hull: ${alienfleet1.ships[i].hull}`;
-//             let shipfirepower2 = document.getElementById("firepower1")
-//             shipfirepower2.innerHTML = `Firepower: ${alienfleet1.ships[i].firepower}`;
-//             let shipaccuracy2 = document.getElementById("accuracy1")
-//             shipaccuracy2.innerHTML = `Accuracy: ${alienfleet1.ships[i].accuracy}`;
-//             break;
-//         case "Alien ship 3":
-//             let shiphull3 = document.getElementById("2")
-//             shiphull3.innerHTML = `Hull: ${alienfleet1.ships[i].hull}`;
-//             let shipfirepower3 = document.getElementById("firepower2")
-//             shipfirepower3.innerHTML =` Firepower: ${alienfleet1.ships[i].firepower}`;
-//             let shipaccuracy3 = document.getElementById("accuracy2")
-//             shipaccuracy3.innerHTML =  `Accuracy: ${alienfleet1.ships[i].accuracy}`;
-//             break;
-//         case "Alien ship 4":
-//             let shiphull4 = document.getElementById("3")
-//             shiphull4.innerHTML = `Hull: ${alienfleet1.ships[i].hull}`;
-//             let shipfirepower4 = document.getElementById("firepower3")
-//             shipfirepower4.innerHTML = `Firepower: ${alienfleet1.ships[i].firepower}`;
-//             let shipaccuracy4 = document.getElementById("accuracy3")
-//             shipaccuracy4.innerHTML =  `Accuracy: ${alienfleet1.ships[i].accuracy}`;
-//             break;
-//         case "Alien ship 5":
-//             let shiphull5 = document.getElementById("4")
-//             shiphull5.innerHTML = `Hull: ${alienfleet1.ships[i].hull}`;
-//             let shipfirepower5 = document.getElementById("firepower4")
-//             shipfirepower5.innerHTML = `Firepower: ${alienfleet1.ships[i].firepower}`;
-//             let shipaccuracy5 = document.getElementById("accuracy4")
-//             shipaccuracy5.innerHTML =  `Accuracy: ${alienfleet1.ships[i].accuracy}`;
-//             break;
-//         case "Alien ship 6":
-//             let shiphull6 = document.getElementById("5")
-//             shiphull6.innerHTML = `Hull: ${alienfleet1.ships[i].hull}`;
-//             let shipfirepower6 = document.getElementById("firepower5")
-//             shipfirepower6.innerHTML =`Firepower: ${alienfleet1.ships[i].firepower}`
-//             let shipaccuracy6 = document.getElementById("accuracy5")
-//             shipaccuracy6.innerHTML = `Accuracy: ${alienfleet1.ships[i].accuracy}`;
-//             break;
-    
-//         }
-//     }
-// }
-
-
-
-
 //Making the logic for one round of the game
 //attacking the ships one by one. I want to iterate through the array of ships. I will use a for loop.
 const element = document.getElementById("btn");
@@ -243,8 +179,8 @@ function playGame(){
             let keepLooping = true;
             while (keepLooping){
                 if (me.accuracy > Math.random()){
-                     //my ship is going to hit 70% of  out of a 100%
-                    //Nw hit ship
+                     //my ship is going to hit 70% of  out of a 100% of the time
+                    //I hit a ship
                     battlePrompt.innerText = `You hit the enemy ship! ${alienfleet1.ships[i].shipname}`
                     console.log(`%c You hit ${alienfleet1.ships[i].shipname}`, "color: red;")
                     me.attack(alienfleet1.ships[i]); //determining whose hull to decrease
@@ -255,6 +191,7 @@ function playGame(){
                         console.log("You won that battle!")
                         me.retreat(alienfleet1.ships[i]);
                         if(i == alienfleet1.ships.length-1){ //i want to say that for the last ship in the array that we basically won the overall game
+                            voice();
                             battlePrompt.innerText = "You won the game! Do you want to play again?"
                             console.log("%c You won the game! Do you want to play again?", "color: green")
                             playagainbtn.appendChild(text);
@@ -436,7 +373,7 @@ function playGame(){
                     else if (alienfleet1.ships[i].hull <= 0){
                         let alienship6 = document.getElementById("Alienship6")
                         alienship6.style.backgroundColor ="rgba(198, 22, 22, 0.257)";
-                        alienship6.innerHTML = `<b>Alienship 5 defeated</b>
+                        alienship6.innerHTML = `<b>Alienship 6 defeated</b>
                         <br> Hull: ${alienfleet1.ships[i].hull}
                         <br> Firepower: ${alienfleet1.ships[i].firepower}
                         <br> Accuracy: ${alienfleet1.ships[i].accuracy}`
