@@ -4,48 +4,91 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black Goose Bistro</title>
+    <title>Spaceship battle</title>
     <link href="index.css" rel="stylesheet">
+    <script src="script.js" defer></script>
+  
 </head>
 <body>
-    <div id="battleprompt"><p></p></div>
-    <div class="header">
-        <img src="goose_img.jpg" id="img">
-        <h1 id ="RestaurantName"><b>BLACK GOOSE BISTRO</b></h1>
-        <hr class="line">
+    <div id="banner">
+        <h1>Spaceship Battle</h1>
+        <p>A probability game!<p> 
     </div>
-<div class="info">
-    <div class="smalldiv">
-        <b><p class="titles">The Restaurant</p></b>
-        <p><b>
-            The Black Goose Bistro offers casual lunch and dinner fare in a hip atmosphere.
-                The menu changes regularly to highlight the freshest ingredients.
-        </b>
-        </p>
+    
+    <div id="battle-box">
+        <div id="battle-prompt">replace
+            
+        </div>
     </div>
-    <div class="smalldiv">
-        <b><p class="titles">Catering</p></b>
-        <p> <em>
-            <b>
-                You have fun... We'll handle the cooking. Black Goose Catering can handle events from snacks for bridge club
-                    to elegant coporate fundraisers.
-            </b>
-        </em>
-        </p>
+    <div id="game-area">
+        <div id ="mySpaceship">
+            <img src="images/USS_Ship.png" id="myshipimg" alt="my space ship">
+            <button id="btn">Shoot!</button>
+            <div class="ship-data">
+                <h1>USS HelloWorld</h1>
+                <h3 id = "my-ship-hull"> replace </h3>
+                <h3 id = "my-ship-firepower">replace</h3>
+                <h3 id = "my-ship-accuracy">replace </h3>
+            </div>
+        </div>
+      
+        <div id="alien-area">
+            <div id="Alienship1" class="alienship">
+                <img src="images/enemy_ship.png" alt="enemyship1" id="alienimg">
+                <div class="alienship1-data" id="aliendata">
+                    <h1>Alien 1</h1>
+                    <h3 class="hull" id = "0"> replace </h3>
+                    <h3 class = "firepower" id="firepower0">replace</h3>
+                    <h3  class ="accuracy" id = "accuracy0">replace </h3>
+                </div>
+            </div>
+            <div id="Alienship2" class="alienship">
+                <img src="images/enemy_ship.png" alt="enemyship2" id="alienimg">
+                <div class="alienship2-data" id="aliendata">
+                    <h1>Alien 2</h1>
+                    <h3 class = "hull" id="1"> replace </h3>
+                    <h3 class="firepower" id = "firepower1">replace</h3>
+                    <h3 class="accuracy" id = "accuracy1">replace </h3>
+                </div>
+            </div>
+            <div id="Alienship3" class="alienship">
+                <img src="images/enemy_ship.png" alt="enemyship3" id="alienimg">
+                <div class="alienship3-data" id="aliendata">
+                    <h1>Alien 3</h1>
+                    <h3 class = "hull" id="2"> replace </h3>
+                    <h3 class="firepower" id = "firepower2">replace</h3>
+                    <h3 class="accuracy" id="accuracy2">replace </h3>
+                </div>
+            </div>
+            <div id="Alienship4" class="alienship">
+                <img src="images/enemy_ship.png" alt="enemyship4" id="alienimg">
+                <div class="alienship4-data" id="aliendata">
+                    <h1>Alien 4</h1>
+                    <h3 class = "hull" id="3"> replace </h3>
+                    <h3 class="firepower" id = "firepower3">replace</h3>
+                    <h3 class="accuracy" id = "accuracy3">replace </h3>
+                </div>
+            </div>
+            <div id="Alienship5" class="alienship">
+                <img src="images/enemy_ship.png" alt="enemyship5" id="alienimg">
+                <div class="alienship5-data" id="aliendata">
+                    <h1>Alien 5</h1>
+                    <h3 class = "hull" id="4"> replace </h3>
+                    <h3  class="firepower" id = "firepower4">replace</h3>
+                    <h3 class ="accuracy"id = "accuracy4">replace </h3>
+                </div>
+            </div>
+            <div id="Alienship6" class="alienship">
+                <img src="images/enemy_ship.png" alt="enemyship6" id="alienimg">
+                <div class="alienship6-data" id="aliendata">
+                    <h1>Alien 6</h1>
+                    <h3 class = "hull" id="5"> replace </h3>
+                    <h3  class="firepower" id = "firepower5">replace</h3>
+                    <h3 class="accuracy" id = "accuracy5">replace </h3>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="smalldiv">
-        <b><p class="titles">Location and Hours</p></b>
-        <p>
-            <em>
-                <b>
-                    <p>Seekonk, Massachusetts;</p>
-                    <p>Monday through Thursday 11am to 9pm,</p>
-                    <p>Friday and Saturday, 11am to midnight</p>
-                </b>
-            </em>
-        </p>
-    </div>
-</div>
-<script src="index.js"></script>
+
 </body>
 </html>
