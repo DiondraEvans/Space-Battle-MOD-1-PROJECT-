@@ -160,6 +160,7 @@ playagainbtn.addEventListener('click', function(evt) {
     }
   }, false);
 
+  //test
 
 //cannot figure out how to get the game board to start over again without refreshing the page completely
 //get the game board reset (still working on this, refresh works for now)
