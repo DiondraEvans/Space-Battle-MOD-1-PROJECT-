@@ -9,7 +9,7 @@ class Ship {
     }
     attack(ship){
         if (ship == me){
-        console.log(alienfleet1.ships[i].firepower);
+        console.log(`${alienfleet1.ships[i].shipname}'s firepower: ${alienfleet1.ships[i].firepower}`);
         console.log(ship);
         ship.hull -= alienfleet1.ships[i].firepower;
         console.log(ship)
@@ -17,7 +17,6 @@ class Ship {
         console.log(me.firepower);
         console.log(ship);
         ship.hull -= me.firepower;
-        
         console.log(ship)
         }
         
@@ -26,19 +25,18 @@ class Ship {
     retreat(destroyedShip){
         if (destroyedShip ==  me){
            battlePrompt.innerText = `You retreated!!!
-           ${alienfleet1.ships[i].shipname} defeated you!`
+           ${alienfleet1.ships[i].shipname} defeated you! 
+           Do you want to play again?`
             myShipImg.style.visibility = "hidden"
+            playagainbtn.appendChild(text);
+            battlePrompt.appendChild(playagainbtn)
         } else{
-             battlePrompt.innerText = ("Alien retreated")
+             console.log(`%c ${alienfleet1.ships[i].shipname} retreated`,"font-style: italic; background: blue; border: 1px solid red; color: white;");//decorating console messages
+           
         }
     }
 }
 let me = new Ship ("USS HelloWorld", 6, 5, .7);
-
-
-
-
-
 
 //making a fleet of ships to hold all my alien ships
 class Alienfleet {
@@ -71,14 +69,15 @@ alienfleet1.addShip("Alien ship 6", undefined, undefined, undefined);
 // battlePrompt.innerText = (typeof alienfleet1.ships);
 // battlePrompt.innerText = (alienfleet1.ships[0].hull);
 //connecting html elements with variables in javascript
+//USS HelloWorld stats before playing the game
 let myShip = document.getElementById("mySpaceship")
 let myShipImg = document.getElementById("myshipimg")
 let myshiphull = document.getElementById('my-ship-hull');
 myshiphull.innerHTML = `Hull: ${me.hull}`;
 let myshipfirepower = document.getElementById('my-ship-firepower');
-myshipfirepower.innerHTML = me.firepower;
+myshipfirepower.innerHTML = `Firepower: ${me.firepower}`;
 let myshipaccuracy = document.getElementById('my-ship-accuracy');
-myshipaccuracy.innerHTML = me.accuracy;
+myshipaccuracy.innerHTML = `Accuracy: ${me.accuracy}`;
 
 
 
@@ -136,38 +135,118 @@ for ( i = 0; i < alienfleet1.ships.length; i++){
 
     }
 }
-// const alienHulls = document.querySelectorAll(".hull");
-
-//  for(i =0; i < alienHulls.length; i++){
-//         if(alienHulls[i] == i){
-//             alienHulls[i].innerHTML = alienfleet1.ships[i].hull
-//          }
-//     }
-
-//adding messages to player
+//adding message box to player also added a refresh button for them to play again
 let battlePrompt = document.getElementById("battle-prompt");
-battlePrompt.innerText = "Let's play!";
-let wonGame = false;
+battlePrompt.innerText = "Press the shoot button to play the game! Let's see if you beat the alien fleet or if you get defeated by an alien ship!";
+var playagainbtn = document.createElement('BUTTON')
+var text = document.createTextNode("yes");
+playagainbtn.style.backgroundColor="#9f5183";
+playagainbtn.style.color="wheat";
+playagainbtn.style.border ="1px #9f5183 solid";
+playagainbtn.style.marginLeft ="9px";
+// the play again button's functionality using a .target on my play again button which returns an action or object when an event(such as 'click') is done onto it
+playagainbtn.setAttribute('id', "yes")
+playagainbtn.addEventListener('click', function(evt) {
+    let playagainbtn = evt.target;
+    if (playagainbtn.id === 'yes') {
+            location.reload();
+    } else if (playagainbtn.id === 'no') {
+      battlePrompt.style.backgroundColor = 'green';
+    } else {
+      battlePrompt.style.backgroundColor = 'purple';
+    }
+  }, false);
+
+
+//cannot figure out how to get the game board to start over again without refreshing the page completely
+//get the game board reset (still working on this, refresh works for now)
+
+// function resetGame(){
+//     let myShip = document.getElementById("mySpaceship")
+//     let myShipImg = document.getElementById("myshipimg")
+//     let myshiphull = document.getElementById('my-ship-hull');
+//     myshiphull.innerHTML = `Hull: ${me.hull}`;
+//     let myshipfirepower = document.getElementById('my-ship-firepower');
+//     myshipfirepower.innerHTML = me.firepower;
+//     let myshipaccuracy = document.getElementById('my-ship-accuracy');
+//     myshipaccuracy.innerHTML = me.accuracy;
+//     for ( i = 0; i < alienfleet1.ships.length; i++){
+//         switch (alienfleet1.ships[i].shipname){
+//         case "Alien ship 1":
+//             let shiphull1 = document.getElementById("0")
+//             shiphull1.innerHTML =`Hull: ${alienfleet1.ships[i].hull}`;
+//             let shipfirepower1 = document.getElementById("firepower0")
+//             shipfirepower1.innerHTML = `Firepower: ${alienfleet1.ships[i].firepower}`;
+//             let shipaccuracy1 = document.getElementById("accuracy0")
+//             shipaccuracy1.innerHTML = `Accuracy: ${alienfleet1.ships[i].accuracy}`;
+//             break;
+//         case "Alien ship 2":
+//             let shiphull2 = document.getElementById("1")
+//             shiphull2.innerHTML = `Hull: ${alienfleet1.ships[i].hull}`;
+//             let shipfirepower2 = document.getElementById("firepower1")
+//             shipfirepower2.innerHTML = `Firepower: ${alienfleet1.ships[i].firepower}`;
+//             let shipaccuracy2 = document.getElementById("accuracy1")
+//             shipaccuracy2.innerHTML = `Accuracy: ${alienfleet1.ships[i].accuracy}`;
+//             break;
+//         case "Alien ship 3":
+//             let shiphull3 = document.getElementById("2")
+//             shiphull3.innerHTML = `Hull: ${alienfleet1.ships[i].hull}`;
+//             let shipfirepower3 = document.getElementById("firepower2")
+//             shipfirepower3.innerHTML =` Firepower: ${alienfleet1.ships[i].firepower}`;
+//             let shipaccuracy3 = document.getElementById("accuracy2")
+//             shipaccuracy3.innerHTML =  `Accuracy: ${alienfleet1.ships[i].accuracy}`;
+//             break;
+//         case "Alien ship 4":
+//             let shiphull4 = document.getElementById("3")
+//             shiphull4.innerHTML = `Hull: ${alienfleet1.ships[i].hull}`;
+//             let shipfirepower4 = document.getElementById("firepower3")
+//             shipfirepower4.innerHTML = `Firepower: ${alienfleet1.ships[i].firepower}`;
+//             let shipaccuracy4 = document.getElementById("accuracy3")
+//             shipaccuracy4.innerHTML =  `Accuracy: ${alienfleet1.ships[i].accuracy}`;
+//             break;
+//         case "Alien ship 5":
+//             let shiphull5 = document.getElementById("4")
+//             shiphull5.innerHTML = `Hull: ${alienfleet1.ships[i].hull}`;
+//             let shipfirepower5 = document.getElementById("firepower4")
+//             shipfirepower5.innerHTML = `Firepower: ${alienfleet1.ships[i].firepower}`;
+//             let shipaccuracy5 = document.getElementById("accuracy4")
+//             shipaccuracy5.innerHTML =  `Accuracy: ${alienfleet1.ships[i].accuracy}`;
+//             break;
+//         case "Alien ship 6":
+//             let shiphull6 = document.getElementById("5")
+//             shiphull6.innerHTML = `Hull: ${alienfleet1.ships[i].hull}`;
+//             let shipfirepower6 = document.getElementById("firepower5")
+//             shipfirepower6.innerHTML =`Firepower: ${alienfleet1.ships[i].firepower}`
+//             let shipaccuracy6 = document.getElementById("accuracy5")
+//             shipaccuracy6.innerHTML = `Accuracy: ${alienfleet1.ships[i].accuracy}`;
+//             break;
+    
+//         }
+//     }
+// }
+
+
+
+
 //Making the logic for one round of the game
 //attacking the ships one by one. I want to iterate through the array of ships. I will use a for loop.
 const element = document.getElementById("btn");
 element.addEventListener("click", playGame);
 function playGame(){
-    
     for( i = 0; i < alienfleet1.ships.length; i++ ){
         if (me.hull <= 0){
             wonGame = false;
+
             break;
         }
         else if (me.hull > 0){
             let keepLooping = true;
             while (keepLooping){
-                
                 if (me.accuracy > Math.random()){
                      //my ship is going to hit 70% of  out of a 100%
                     //Nw hit ship
                     battlePrompt.innerText = `You hit the enemy ship! ${alienfleet1.ships[i].shipname}`
-                    console.log(`You hit the enemy ship! ${alienfleet1.ships[i].shipname}`)
+                    console.log(`%c You hit ${alienfleet1.ships[i].shipname}`, "color: red;")
                     me.attack(alienfleet1.ships[i]); //determining whose hull to decrease
                    
                     
@@ -175,10 +254,11 @@ function playGame(){
                         battlePrompt.innerText = "You won that battle!"
                         console.log("You won that battle!")
                         me.retreat(alienfleet1.ships[i]);
-                        if(alienfleet1.ships[i].shipname == "Alien ship 6"){
-                            battlePrompt.innerText = "You won the game!"
-                            console.log("You won the game!")
-                            wonGame = true;
+                        if(i == alienfleet1.ships.length-1){ //i want to say that for the last ship in the array that we basically won the overall game
+                            battlePrompt.innerText = "You won the game! Do you want to play again?"
+                            console.log("%c You won the game! Do you want to play again?", "color: green")
+                            playagainbtn.appendChild(text);
+                            battlePrompt.appendChild(playagainbtn)
                         }
                         break;
                     } else if (me.hull <= 0){
@@ -186,23 +266,22 @@ function playGame(){
                         alienfleet1.ships[i].retreat(me);
                         break;
                     }
-                         //takes you out the while loop
+
                 } 
                 
                 else {
                     //my ship attacked but missed
                     //alien ship attacks
                     
-                    battlePrompt.innerText =  "You missed!"
-                    console.log("You missed!")
+                    battlePrompt.innerText =  "You missed your target!"
+                    console.log(`%c You missed your target with ${alienfleet1.ships[i].shipname}`, "font-weight: bold;")
                     if( alienfleet1.ships[i].hull > 0 && alienfleet1.ships[0].accuracy > Math.random()){
                         battlePrompt.innerText = "You have been hit!"
                         console.log("You have been hit!")
                         alienfleet1.ships[i].attack(me);
-                        myshiphull.innerHTML = me.hull;
+                        myshiphull.innerHTML =`Hull: ${me.hull}` 
                         if (me.hull <= 0){
                             alienfleet1.ships[i].retreat(me);
-                            wonGame = false;
                             break;
                         }
                         
@@ -215,7 +294,7 @@ function playGame(){
                     
         
             }  
-            
+                //stats for aliens inside of the for loop for it to update while looping
                 switch (alienfleet1.ships[i].shipname){
                 case "Alien ship 1":
                     if(alienfleet1.ships[i].hull > 0){
@@ -375,10 +454,14 @@ function playGame(){
         }
        
     };
-
-    
+             
+  
 }
-
+// let response = window.prompt("Want to play again?");
+// if(response.toLowerCase() == "yes"){ 
+//     window.location.reload();
+//     }
+  
 // playGame();
 // const element = document.getElementById("btn");
 // element.addEventListener("click", playGame);
@@ -542,25 +625,6 @@ function playGame(){
 //     }
 // }
 
-
-
-
-
-
-
-
-
-
-
-    // if (me.accuracy > alienfleet1.ships[i].accuracy){
-    //     battlePrompt.innerText = ("target found")
-    //     if(me.firepower > alienfleet1.ships[i].firepower){
-    //         battlePrompt.innerText = ("you hit the target!")
-    //         me.attack(alienfleet1.ships[i]);
-    //     }
-    // } else{
-    //     battlePrompt.innerText = ("They have")
-    // }
 
 //for the ship I am fighting, I want to have a battle.
 //if in battle  my hull reaches 0 I die, then I lost the game
