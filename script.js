@@ -36,7 +36,7 @@ class Ship {
         }
     }
 }
-let me = new Ship ("USS HelloWorld", 6, 5, .7);
+let me = new Ship ("USS HelloWorld", 20, 5, .7); 
 
 //making a fleet of ships to hold all my alien ships
 class Alienfleet {
