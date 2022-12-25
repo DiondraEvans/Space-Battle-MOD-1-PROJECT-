@@ -1,6 +1,6 @@
 <h1>link to play game here:</h1>
 <p>https://diondraevans.github.io/Space-Battle-MOD-1-PROJECT-/</p>
-project for Per Scholas project
+A project assigned by per scholas to manipulate the DOM.
 # <b>Space-Battle-MOD-1-PROJECT-</b>
 
 <h1>Technologies:</h1>
