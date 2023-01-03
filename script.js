@@ -29,6 +29,7 @@ class Ship {
            Do you want to play again?`
             myShipImg.style.display = "none"
             myshipimgdestroyed.style.display = "inline"
+            beat.play();
             playagainbtn.appendChild(text);
             battlePrompt.appendChild(playagainbtn)
         } else{
@@ -77,7 +78,8 @@ myshipfirepower.innerHTML = `Firepower: ${me.firepower}`;
 let myshipaccuracy = document.getElementById('my-ship-accuracy');
 myshipaccuracy.innerHTML = `Accuracy: ${me.accuracy}`;
 
-
+//creating an audio element to use later on so I can add a method to it to play.
+let beat = new Audio('sound/explosion.mp3');
 
 //stats displayed before playing the game
 for ( i = 0; i < alienfleet1.ships.length; i++){
