@@ -43,12 +43,12 @@ body{
     align-items: center;
 }
 #battle-prompt{
-    width: 300px;
-    height: 100px;
-    padding: 5px;
+    width: 337px;
+    height: 140px;
+    padding: 28px;
     color: white;
     background-color: #0F2027;
-    border:3px #2d237c inset;
+    border: 3px #2d237c inset;
 }
 #alienimg{
     width: 140px;
@@ -64,6 +64,10 @@ body{
 }
 #mySpaceship{
     color: white;
+}
+#myshipimgdestroyed{
+    width: 400px;
+    display: none;
 }
 .alienship h1, h3{
     color: white;
